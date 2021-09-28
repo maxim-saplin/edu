@@ -25,11 +25,10 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'rust_exc'",
+            "name": "Count_words debug",
             "cargo": {
                 "args": [
-                    "test",
-                    "--no-run",
+                    "build",
                     "--bin=rust_exc",
                     "--package=rust_exc"
                 ],
@@ -38,8 +37,8 @@
                     "kind": "bin"
                 }
             },
-            "args": [],
+            "args": ["book.txt"],
             "cwd": "${workspaceFolder}"
-        }
+        },
     ]
 }
