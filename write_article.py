@@ -38,12 +38,17 @@ user_proxy = autogen.UserProxyAgent(
 
 task = """
 Your task is to write an article about AutoGen. The idea is to give a quick start guide.
-
-First, you need yo rvaluate the docs about AutoGen at https://microsoft.github.io/autogen/
-
+First, you need yo evaluate the docs about AutoGen at https://microsoft.github.io/autogen/, make sure to follow links at the web site and gather deep enough understanding of the library.
 Second, you will be describing a sample project located at: https://github.com/maxim-saplin/autogen_sample/blob/main/write_article.py
+Your result must be a markdown file named 'article.md' that will be used to publish it at a public blogging platform.
 
-You result must be a markdown file that will be used to publish it at a public blogging platform.
+Article acceptance criteria:
+- Engaging writing
+- Reviews the concepts of AutoGen
+- Reviews the sample project
+- Provides code snippets
+- Is a good starting point for a developer looking at starting to use AutoGen
+- Is well structured
 """
 
 user_proxy.initiate_chat(assistant, message=task)
