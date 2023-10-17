@@ -28,7 +28,7 @@ user_proxy = autogen.UserProxyAgent(
     human_input_mode="TERMINATE",
     max_consecutive_auto_reply=10,
     is_termination_msg=lambda x: x.get ("content", "").rstrip() .endswith("Terminate"),
-    code_execution_config={"work_dir":"_output"},
+    code_execution_config={"work_dir":"_output", "use_docker":"python:3"},
     llm_config=llm_config,
     system_message=""""Reply TERMINATE if the task has been solved at full satisfaction.
 Otherwise, reply CONTINUE, or the reason why the task is not solved yet."""
@@ -36,8 +36,9 @@ Otherwise, reply CONTINUE, or the reason why the task is not solved yet."""
 
 task = """
 1. Write Python script that saves the contents of the article `https://dev.to/maximsaplin/efficient-dart-part-2-going-competitive-307c` to a .txt file
-2. Then the script counts words and builds a histogram (words sorted by frequency), saves results to another .txt file
-3. Check the produced histogram and try guessing what the article is about
+2. Then the script counts words and builds a histogram with word frequency, saves results to another .txt file with words sorted from most frequent to the least
+3. Check the produced histogram and try guessing what the article is about, save thr results to `summary.txt`
+4. Store the Python script in `process.py` file
 
 Use Python. If there're any dependencies required please specifically tell me how to get them installed.
 """
