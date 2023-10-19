@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 config_list.json
 _output/
+chromadb/

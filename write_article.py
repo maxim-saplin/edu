@@ -1,4 +1,7 @@
 import autogen
+# from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
+from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
+import chromadb
 
 config_list = autogen.config_list_from_json(
     "config_list.json",
@@ -17,24 +20,63 @@ llm_config={
     "temperature": 0,
 }
 
-assistant = autogen.AssistantAgent(
-    name="Blogger",
-    llm_config=llm_config,
-    system_message="You are a software engineer and a populat tech blogger"
+# web_surfer = RetrieveUserProxyAgent(
+#     name="Web-Surfer",
+#     is_termination_msg=lambda x: x.get ("content", "").rstrip().endswith("TERMINATE"),
+#     system_message="Assistant who has extra content retrieval power for solving difficult problems",
+#     human_input_mode="NEVER",
+#     max_consecutive_auto_reply=3,
+#     retrieve_config={
+#         "task": "code",
+#         "chunk_token_size": 1000,
+#         "model": config_list[0]["model"],
+#         "client": chromadb.PersistentClient(path="/tmp/chromadb"),
+#         "collection_name": "groupchat",
+#         "get_or_create": True,
+#     },
+#     code_execution_config=False,  # we don't want to execute code in this case.
+# )
+
+web_surfer = RetrieveAssistantAgent(
+    name="assistant", 
+    system_message="You are a helpful assistant.",
+    code_execution_config=False,
+    llm_config={
+        "request_timeout": 600,
+        "seed": 42,
+        "config_list": config_list,
+    },
 )
 
-user_proxy = autogen.UserProxyAgent(
-    name="smax",
-    human_input_mode="TERMINATE",
-    max_consecutive_auto_reply=15,
-    #is_termination_msg=lambda x: x.get ("content", "").rstrip().endswith("TERMINATE"),
-    code_execution_config={"work_dir":"_output2", "use_docker":"python:3"},
+blogger = autogen.AssistantAgent(
+    name="Blogger",
     llm_config=llm_config,
-    # system_message=""""
-    # You are a professional article reviwer and software engineer. Carefully evaluate the taks and you peer answers. 
-    # Reply TERMINATE if the task has been solved at full satisfaction. Otherwise, reply CONTINUE, or the reason why the task is not solved.
-    # """
+    code_execution_config=False,
+    system_message="You are a software engineer and a popular tech blogger"
 )
+
+reviewer = autogen.UserProxyAgent(
+    name="Reviewer",
+    llm_config=llm_config,
+    human_input_mode="TERMINATE",
+    is_termination_msg=lambda x: x.get ("content", "").rstrip().endswith("TERMINATE"),
+    code_execution_config=False,
+    #code_execution_config={"work_dir":"_output2", "use_docker":"python:3"},
+    system_message="You are a software engineer and a professional article reviewer"
+)
+
+# user_proxy = autogen.UserProxyAgent(
+#     name="smax",
+#     human_input_mode="TERMINATE",
+#     max_consecutive_auto_reply=15,
+#     is_termination_msg=lambda x: x.get ("content", "").rstrip().endswith("TERMINATE"),
+#     #code_execution_config={"work_dir":"_output2", "use_docker":"python:3"},
+#     llm_config=llm_config,
+#     # system_message=""""
+#     # You are a professional article reviwer and software engineer. Carefully evaluate the taks and you peer answers. 
+#     # Reply TERMINATE if the task has been solved at full satisfaction. Otherwise, reply CONTINUE, or the reason why the task is not solved.
+#     # """
+# )
 
 task = """
 Your task is to write an article about AutoGen. The idea is to give a quick start guide.
@@ -51,4 +93,13 @@ Article acceptance criteria:
 - Is well structured
 """
 
-user_proxy.initiate_chat(assistant, message=task)
+groupchat = autogen.GroupChat(
+    agents=[web_surfer, blogger, reviewer], messages=[], max_round=12
+)
+manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
+
+reviewer.initiate_chat(
+    manager,
+    message=task,
+    n_results=3,
+)

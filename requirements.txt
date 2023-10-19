@@ -1,2 +1,5 @@
-pyautogen
+pyautogen[retrievechat]
 docker
+chromadb
+ipython
+flaml[automl]
