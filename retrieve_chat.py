@@ -1,3 +1,5 @@
+# https://github.com/microsoft/autogen/blob/47df9d53be9ba28da460c7344e3c8a37bdbbc24b/notebook/agentchat_groupchat_RAG.ipynb
+
 import autogen
 
 config_list = autogen.config_list_from_json(
