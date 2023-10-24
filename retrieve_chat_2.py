@@ -1,3 +1,6 @@
+# https://github.com/microsoft/autogen/blob/47df9d53be9ba28da460c7344e3c8a37bdbbc24b/notebook/agentchat_RetrieveChat.ipynb#L22
+# Run Docket desktop, add /Library/Frameworks/Python.framework/ tunder File Sharing options
+
 import autogen
 
 config_list = autogen.config_list_from_json(
@@ -23,7 +26,7 @@ from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistant
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 import chromadb
 
-autogen.ChatCompletion.start_logging()
+autogen.ChatCompletion.start_logging(compact=True)
 
 # 1. create an RetrieveAssistantAgent instance named "assistant"
 assistant = RetrieveAssistantAgent(
@@ -46,6 +49,7 @@ ragproxyagent = RetrieveUserProxyAgent(
     name="ragproxyagent",
     human_input_mode="NEVER",
     max_consecutive_auto_reply=10,
+    code_execution_config={"use_docker":"python:3"},
     retrieve_config={
         "task": "code",
         "docs_path": "./website/docs/reference",
@@ -58,6 +62,8 @@ ragproxyagent = RetrieveUserProxyAgent(
 
 print(autogen.ChatCompletion.logged_history)
 
+#Ex 1
+
 # reset the assistant. Always reset the assistant before starting a new conversation.
 assistant.reset()
 
@@ -65,7 +71,17 @@ assistant.reset()
 # the assistant receives the message and generates a response. The response will be sent back to the ragproxyagent for processing.
 # The conversation continues until the termination condition is met, in RetrieveChat, the termination condition when no human-in-loop is no code block detected.
 # With human-in-loop, the conversation will continue until the user says "exit".
-code_problem = "How can I use FLAML to perform a classification task and use spark to do parallel training. Train 30 seconds and force cancel jobs if time limit is reached."
-ragproxyagent.initiate_chat(assistant, problem=code_problem, search_string="spark")  # search_string is used as an extra filter for the embeddings search, in this case, we only want to search documents that contain "spark".
+
+#code_problem = "How can I use FLAML to perform a classification task and use spark to do parallel training. Train 30 seconds and force cancel jobs if time limit is reached."
+#ragproxyagent.initiate_chat(assistant, problem=code_problem, search_string="spark")  # search_string is used as an extra filter for the embeddings search, in this case, we only want to search documents that contain "spark".
+
+print(autogen.ChatCompletion.logged_history)
+
+#Ex 2
+
+assistant.reset()
+
+qa_problem = "Who is the author of FLAML?"
+ragproxyagent.initiate_chat(assistant, problem=qa_problem)
 
 print(autogen.ChatCompletion.logged_history)
