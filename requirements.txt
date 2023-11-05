@@ -1,0 +1,5 @@
+langchain
+beautifulsoup4
+playwright
+html2text
+python-dotenv
