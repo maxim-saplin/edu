@@ -3,5 +3,7 @@
     "spellright.documentTypes": [
         "latex",
         "plaintext"
-    ]
+    ],
+    "workbench.preferredHighContrastColorTheme": "Abyss",
+    "workbench.colorTheme": "Visual Studio Dark"
 }
