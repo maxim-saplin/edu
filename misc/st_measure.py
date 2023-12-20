@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 import time
+import numpy as np
 
 def measure_load_time(url, timeout=30000):
     with sync_playwright() as p:
@@ -26,13 +27,11 @@ def measure_load_time(url, timeout=30000):
 
         return load_time
 
-
-import numpy as np
-
 # Run the load time measurement 10 times and calculate the average and standard deviation
 load_times = []
 for i in range(1):
-    load_time = measure_load_time('http://localhost:8501')
+    # load_time = measure_load_time('http://localhost:8501')
+    load_time = measure_load_time('https://google.com')
     load_times.append(load_time)
     print(f"Iteration {i+1}: Load time is {load_time} seconds")
 average_time = np.mean(load_times)
