@@ -29,7 +29,7 @@ def measure_load_time(url, timeout=30000):
 
 # Run the load time measurement 10 times and calculate the average and standard deviation
 load_times = []
-for i in range(1):
+for i in range(10):
     # load_time = measure_load_time('http://localhost:8501')
     load_time = measure_load_time('https://google.com')
     load_times.append(load_time)
