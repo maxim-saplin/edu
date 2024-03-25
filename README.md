@@ -1,0 +1,1 @@
+Following the "Let's build the GPT Tokenizer" tutorial: https://www.youtube.com/watch?v=zduSFxRajkE&t=1596s 
