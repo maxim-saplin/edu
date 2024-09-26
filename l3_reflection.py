@@ -183,4 +183,11 @@ pprint.pprint(chat_result.chat_history)
 # and then using it as the 2nd message to the writer asking it to make another attempt
 # This looks like an interesting pattern where you can launch a subchain of prompts doing processing of master chain's mssages,
 # also aggergsting a review from 4 agents from a nested chat makes sense as it may save on tokens
-# and not confuse the writer with abundance of input words
+# and not confuse the writer with abundance of input words.
+# Yet the demonstration is quite rigid prompt chain, not a versatile self-managed collective of agents (yet again inflated Gen AI expectations).
+# Anyways not sure if Autogen brings much vaoue here, still missing the control over prompts and their flow (the LangChain controversy is relevant here),
+# Autogen might be giving to much abstractions which stay in a way and do not help with debugging (see the llm summarization commented out
+# in nested chats due to bugs). I still fell that for such cases (up until lesson 3) Autogen doesn't give much values,
+# simplictic prompt chains bakcreferencing previous chains with minimal LLM libraries are better and give more visibility and controler over prompts,
+# e.g. https://gist.github.com/disler/d51d7e37c3e5f8d277d8e0a71f4a1d2e
+# (TODO - try recreating this sample with prompt chain as in the link, see how it compares)

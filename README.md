@@ -11,9 +11,9 @@ Using llm_config to set up LLM with Azure, basic 1-to-1 conversation between age
 ## Lesson 2: Sequential Chats and Customer Onboarding
 
 The lesson simulates a 3-step onboarding process using multiple agents:
-1. **Personal Information Agent**: Collects name and location.
-2. **Topic Preference Agent**: Gathers interests. Uses a lambda function for termination detection.
-3. **Engagement Agent**: Delivers engaging content based on user info.
+1. Personal Information Agent: Collects name and location.
+2. Topic Preference Agent: Gathers interests. Uses a lambda function for termination detection.
+3. Engagement Agent: Delivers engaging content based on user info.
 
 Had cognitive dissonance when 3 agents were supposed to ask 3 questions (name, location, interests). An agent in my head is an analog to a person, in this case it also seemed that we are automating customer support case which will typically be handled by a single human operator. Additioonally even witout agents this case perfectly fitst single multi-turn dialog with a single system message (e.g. you are a support specialist helping with onboparding etc.). All of that makes the example a bit superficial. Latter it became clear that agents and chats represented what creai calls agents and tasks - and this gives crewai an edge as it is useing relevant and meaningful contepts (and btw a single agentr will be OK to run 3 tasks in sequence).
 
@@ -26,6 +26,18 @@ Had cognitive dissonance when 3 agents were supposed to ask 3 questions (name, l
 - The whole example is a bit superficial, smells as irrelevant/is not grounded on the strengths of LLMs
     - From a UX standpoint asking for name/location via an agent rather than a validation form is awkward. It's kust like using a coinversational UI to pick the best color (asking to type in the color) of a product rather than showing a number of tiles with product pictures and asking to click the one user likes
 
+### Lesson 3: Reflection and Blogpost Writing
+
+This lesson explores the collaborative refinement of content using multiple agents:
+1. Writer Agent: Crafts an initial blog post about DeepLearning.AI.
+2. Critic Agent: Provides feedback to enhance the blog post.
+3. Nested Reviewers: Includes SEO, Legal, and Ethics reviewers, each offering specialized insights.
+4. Meta Reviewer: Aggregates all feedback to provide final suggestions.
+
+- Agent Collaboration: Demonstrates iterative content improvement through agent teamwork.
+- Nested Chats: Efficiently gathers diverse feedback, optimizing the review process.
+- Abstraction Challenges: High-level abstractions in Autogen can obscure prompt flow control, complicating debugging.
+- Practicality: While the pattern is intriguing, it may be rigid and not fully leverage LLM strengths. Simpler prompt chains might offer better control.
 
 ## Comparison to Crewai
 
