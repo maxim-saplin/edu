@@ -41,7 +41,25 @@ This lesson explores the collaborative refinement of content using multiple agen
 
 ## Lesson 4: Tool Use and Conversational Chess
 
-<!-- TBD -->
+This lesson demonstrates the integration of tool use within a conversational chess game between AI agents:
+
+1. Chess Board Initialization: Utilizes the chess library to set up and manage the game board.
+2. Agent Roles:
+   - Player White: A professional chess player agent.
+   - Player Black: A beginner chess player agent.
+3. Tool Registration: Functions like get_legal_moves and make_move are registered as tools for agents to interact with the chess board.
+4. Game Dynamics:
+   - Agents engage in nested chats to determine legal moves and execute them.
+   - The game is animated using matplotlib to visualize moves.
+5. LLMs lack awareness of the board state, relying solely on move history, which questions their ability to control the game effectively (might be changed to better utilize LLMs).
+
+Challenges and Observations:
+- The lesson highlights the limitations of LLMs in completing a chess game, with agents often making random moves after extended play.
+- Emphasizes the need for better state management and error handling when LLMs suggest illegal moves.
+- Demonstrates the potential of nested chats to provide guardrails and ensure valid gameplay.
+- The example underscores how Gen AI tools are good to start something but struggle to finish, as even basic chess games were not completed after many turns.
+- The exercise shows that while LLMs can initiate tasks, they may not excel in completing them without additional guidance.
+- Highlights the importance of integrating real-time feedback and state awareness to improve AI performance in dynamic tasks.
 
 ## Comparison to Crewai
 
