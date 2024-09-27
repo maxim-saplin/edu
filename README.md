@@ -26,7 +26,7 @@ Had cognitive dissonance when 3 agents were supposed to ask 3 questions (name, l
 - The whole example is a bit superficial, smells as irrelevant/is not grounded on the strengths of LLMs
     - From a UX standpoint asking for name/location via an agent rather than a validation form is awkward. It's kust like using a coinversational UI to pick the best color (asking to type in the color) of a product rather than showing a number of tiles with product pictures and asking to click the one user likes
 
-### Lesson 3: Reflection and Blogpost Writing
+## Lesson 3: Reflection and Blogpost Writing
 
 This lesson explores the collaborative refinement of content using multiple agents:
 1. Writer Agent: Crafts an initial blog post about DeepLearning.AI.
@@ -38,6 +38,10 @@ This lesson explores the collaborative refinement of content using multiple agen
 - Nested Chats: Efficiently gathers diverse feedback, optimizing the review process.
 - Abstraction Challenges: High-level abstractions in Autogen can obscure prompt flow control, complicating debugging.
 - Practicality: While the pattern is intriguing, it may be rigid and not fully leverage LLM strengths. Simpler prompt chains might offer better control.
+
+## Lesson 4: Tool Use and Conversational Chess
+
+<!-- TBD -->
 
 ## Comparison to Crewai
 
