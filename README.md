@@ -61,6 +61,15 @@ Challenges and Observations:
 - The exercise shows that while LLMs can initiate tasks, they may not excel in completing them without additional guidance.
 - Highlights the importance of integrating real-time feedback and state awareness to improve AI performance in dynamic tasks.
 
+## Lesson 5: Coding and Financial Analysis
+
+- Freestyle coding - asking LLM (code writer agent) to write arbitrary Pythion code and anothoer proxy agent (executor) to run it and repsond with the results (i.e. erorr messages OR termination mesage if all is good)
+- Another flavour is using UDFs, i.e. defining python functions, passing their signatures into propmpt and asking code writer to reply on those
+- No financial anaylsis whatsoever, merely plotting 2 stocks
+- As usually, very bacis tasks, yet even with those GPT-4o mini failed to create code producing propper time series
+  - Another confirmation there's little use in real life as they stumble upon simple instructions and fail in producing short Pyhton code, it's been 2 years since ChatGPT revolution
+- Disappointed with the stability of Autogen, local execution failng to run Python code, Docker executor not supporting UDFs
+
 ## Comparison to Crewai
 
 - I liked how Crewai had the streamlined concept of agents working in a team (a crew) on assigned task - something similar to what a Project Manager deal with in real life, familiar concept
