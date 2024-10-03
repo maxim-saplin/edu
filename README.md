@@ -65,4 +65,6 @@ Challenges and Observations:
 
 - I liked how Crewai had the streamlined concept of agents working in a team (a crew) on assigned task - something similar to what a Project Manager deal with in real life, familiar concept
 - I also liked the ease of use, docs, web sites - all of the seemed more accomodating compared to Autogen
-- Crewai doesn't support native tool call (i.e. using special kind of messages and relying on fine-tuned ability of LLM to respond with a reqeust for a tool call in a special message kind), crewai asks for tool directly in user prompt and parses the output in assistant natural language reply, while Autogen can use OpenAI's API for tool call and properly format tool description into the request
+- Crewai doesn't support native tool call (i.e. using special kind of messages and relying on fine-tuned ability of LLM to respond with a reqeust for a tool call in a special message kind), crewai asks for tool directly in user prompt and parses the output in assistant natural language reply, while Autogen can use OpenAI's API for tool call and properly format tool description into the request.
+    - Pro, crewai can work with any LLM
+    - Con, crewai can't leverage better accuracy of tool call request relying on native tool call support
