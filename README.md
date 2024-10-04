@@ -70,6 +70,8 @@ Challenges and Observations:
   - Another confirmation there's little use in real life as they stumble upon simple instructions and fail in producing short Pyhton code, it's been 2 years since ChatGPT revolution
 - Disappointed with the stability of Autogen, local execution failng to run Python code, Docker executor not supporting UDFs
 
+## Lesson 6: Planning and Stock Report Generation
+
 ## Comparison to Crewai
 
 - I liked how Crewai had the streamlined concept of agents working in a team (a crew) on assigned task - something similar to what a Project Manager deal with in real life, familiar concept
