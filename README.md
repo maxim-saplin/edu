@@ -72,6 +72,11 @@ Challenges and Observations:
 
 ## Lesson 6: Planning and Stock Report Generation
 
+- Agents collaborate to generate a stock report on Nvidia.
+    - Roles include Admin, Planner, Engineer, Executor, and Writer.
+- Challenges include coordination and execution hurdles.
+- o1-mini failed, o1 required several attempts
+
 ## Comparison to Crewai
 
 - I liked how Crewai had the streamlined concept of agents working in a team (a crew) on assigned task - something similar to what a Project Manager deal with in real life, familiar concept
