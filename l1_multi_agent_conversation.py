@@ -1,8 +1,9 @@
 # flake8: noqa: 266
 import os
 import pprint
+from typing import Any, Dict, List, Optional, Union
 from dotenv import load_dotenv
-from autogen import ConversableAgent
+from autogen import Agent, ConversableAgent
 
 
 load_dotenv()
@@ -42,7 +43,18 @@ cathy = ConversableAgent(
     human_input_mode="NEVER",
 )
 
-joe = ConversableAgent(
+
+class LookInsideAgent(ConversableAgent):
+    def generate_reply(
+        self,
+        messages: Optional[List[Dict[str, Any]]] = None,
+        sender: Optional["Agent"] = None,
+        **kwargs: Any,
+    ) -> Union[str, Dict, None]:
+        return super().generate_reply(messages=messages, sender=sender, **kwargs)
+
+
+joe = LookInsideAgent(
     name="joe",
     system_message="Your name is Joe and you are a stand-up comedian. "
     "Start the next joke from the punchline of the previous joke.",

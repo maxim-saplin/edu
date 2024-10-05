@@ -76,6 +76,7 @@ Challenges and Observations:
     - Roles include Admin, Planner, Engineer, Executor, and Writer.
 - Challenges include coordination and execution hurdles.
 - o1-mini failed, o1 required several attempts
+- The least understood part, I still struggle to understand how the group chat unrolls into individual user/assistant conversations at Chat Completions API level and what is actualy sent to LLM
 
 ## Comparison to Crewai
 
