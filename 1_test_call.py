@@ -2,20 +2,9 @@ import asyncio
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.ui import Console
-from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
+from client import get_azure_client
 
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-model_client = AzureOpenAIChatCompletionClient(
-    azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
-    model="gpt-4o",
-    api_version=os.getenv("AZURE_OPENAI_VERSION"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.getenv("AZURE_OPENAI_KEY"),
-)
+model_client = get_azure_client()
 
 
 # Define a tool
@@ -44,4 +33,5 @@ async def main() -> None:
         await Console(stream)
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
