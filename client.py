@@ -4,6 +4,7 @@ from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
 
 load_dotenv()
 
+
 def get_azure_client():
     return AzureOpenAIChatCompletionClient(
         azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
