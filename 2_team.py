@@ -43,6 +43,13 @@ async def main():
     result = await team.run(task="Write a short poem about the fall season.")
     print("\n\033[1;34mRun a team in one go\033[0m\n\n")
     pprint(result)
+
+    writer_state = await writer_agent.save_state()
+    critic_state = await critic_agent.save_state()
+    pprint(writer_state)
+    pprint(critic_state)
+
+
     print("\n\033[1;34mDONE\033[0m\n\n")
 
     # Streaming, not to be confused with streaming in chats where you get token by token streaming while a message is being generated.
