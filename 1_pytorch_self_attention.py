@@ -23,6 +23,7 @@ class SelfAttention(nn.Module):
         ##       creating the the queries, keys, and values, but
         ##       the original manuscript that described Attention,
         ##       "Attention Is All You Need" did not, so we won't either
+        ##       The created weights are initialized to random values
         self.W_q = nn.Linear(in_features=d_model, out_features=d_model, bias=False)
         self.W_k = nn.Linear(in_features=d_model, out_features=d_model, bias=False)
         self.W_v = nn.Linear(in_features=d_model, out_features=d_model, bias=False)
