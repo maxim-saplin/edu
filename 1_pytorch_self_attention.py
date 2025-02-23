@@ -32,6 +32,8 @@ class SelfAttention(nn.Module):
 
         
     def forward(self, token_encodings):
+        ## The forward() method defines the computation performed at every call.
+        ## In this case, it processes the token encodings to generate query, key, and value matrices.
         ## Create the query, key and values using the encoding numbers
         ## associated with each token (token encodings)
         q = self.W_q(token_encodings)
@@ -66,8 +68,11 @@ selfAttention = SelfAttention(d_model=2,
                                row_dim=0,
                                col_dim=1)
 
-## calculate basic attention for the token encodings
-selfAttention(encodings_matrix)
+## calculate basic attention for the token encodings, implicitly calls forward()
+scrores = selfAttention(encodings_matrix)
+
+print(selfAttention)
+print(scrores)
 
 ## print out the weight matrix that creates the queries
 print(selfAttention.W_q.weight.transpose(0, 1))
