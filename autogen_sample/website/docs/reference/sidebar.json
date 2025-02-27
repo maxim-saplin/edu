@@ -1,0 +1,125 @@
+{
+  "items": [
+    {
+      "items": [
+        {
+          "items": [
+            "reference/autogen/oai/completion"
+          ],
+          "label": "autogen.oai",
+          "type": "category"
+        },
+        "reference/autogen/code_utils",
+        "reference/autogen/math_utils"
+      ],
+      "label": "autogen",
+      "type": "category"
+    },
+    {
+      "items": [
+        {
+          "items": [
+            {
+              "items": [
+                "reference/automl/nlp/huggingface/trainer",
+                "reference/automl/nlp/huggingface/training_args",
+                "reference/automl/nlp/huggingface/utils"
+              ],
+              "label": "automl.nlp.huggingface",
+              "type": "category"
+            },
+            "reference/automl/nlp/utils"
+          ],
+          "label": "automl.nlp",
+          "type": "category"
+        },
+        {
+          "items": [
+            "reference/automl/spark/metrics",
+            "reference/automl/spark/utils"
+          ],
+          "label": "automl.spark",
+          "type": "category"
+        },
+        {
+          "items": [
+            "reference/automl/task/task"
+          ],
+          "label": "automl.task",
+          "type": "category"
+        },
+        "reference/automl/automl",
+        "reference/automl/data",
+        "reference/automl/ml",
+        "reference/automl/model",
+        "reference/automl/state",
+        "reference/automl/utils"
+      ],
+      "label": "automl",
+      "type": "category"
+    },
+    {
+      "items": [
+        "reference/default/estimator",
+        "reference/default/greedy",
+        "reference/default/portfolio",
+        "reference/default/suggest"
+      ],
+      "label": "default",
+      "type": "category"
+    },
+    {
+      "items": [
+        "reference/onlineml/autovw",
+        "reference/onlineml/trial",
+        "reference/onlineml/trial_runner"
+      ],
+      "label": "onlineml",
+      "type": "category"
+    },
+    {
+      "items": [
+        {
+          "items": [
+            "reference/tune/scheduler/online_scheduler",
+            "reference/tune/scheduler/trial_scheduler"
+          ],
+          "label": "tune.scheduler",
+          "type": "category"
+        },
+        {
+          "items": [
+            "reference/tune/searcher/blendsearch",
+            "reference/tune/searcher/cfo_cat",
+            "reference/tune/searcher/flow2",
+            "reference/tune/searcher/online_searcher",
+            "reference/tune/searcher/search_thread",
+            "reference/tune/searcher/suggestion",
+            "reference/tune/searcher/variant_generator"
+          ],
+          "label": "tune.searcher",
+          "type": "category"
+        },
+        {
+          "items": [
+            "reference/tune/spark/utils"
+          ],
+          "label": "tune.spark",
+          "type": "category"
+        },
+        "reference/tune/analysis",
+        "reference/tune/sample",
+        "reference/tune/space",
+        "reference/tune/trial",
+        "reference/tune/trial_runner",
+        "reference/tune/tune",
+        "reference/tune/utils"
+      ],
+      "label": "tune",
+      "type": "category"
+    },
+    "reference/config"
+  ],
+  "label": "Reference",
+  "type": "category"
+}
