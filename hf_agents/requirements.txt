@@ -1,3 +1,4 @@
 marimo
 smolagents
 watchdog
+smolagents[openai]
