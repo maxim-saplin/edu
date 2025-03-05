@@ -19,10 +19,18 @@ Practice/examples from Huggingface's Agents Course
 
 - ToolCallingAgent class relies or models native support for funtion/tool calling
 - Otherwise seems similar to CodeAgent in terms of results, it just achived via a different approach
+- System prompt is just 997 tokens - much better than CodeAgent
 
-## Notes
+## Lesson 3 - Tools
 
-- Tried Marimo (`marimo edit --watch 1_smolagents.py` ) with 1st lesson, unfortunate discoveries:
-    - No debegging (breakpoints, traces, stepping into)
-    - No clear way to store cell outputs to Git - found that Marimo uses a different approach - Auto-download (availble thropugh gerar icon at the top right). This way a snapshot will be saved to `__marimo__` folder
-    - Don't see why I need to mix Jupyter and Stremalit in Marimo which has 2 distinct modes - Notebooks (edit) and App (run) 
+- @tool atribute (easier) vs inheriting from Tool class
+- The former relies on smolagents passing in docstring as tool descriotion to LLM, the latter one gives more finer grain control
+- One can load tools from HF (as well as upload tools there), use HF spaces as tools and import LangChain tools
+
+## Marimo
+
+Tried Marimo (`marimo edit --watch 1_smolagents.py` ) with 1st lesson, unfortunate discoveries:
+ - No debegging (breakpoints, traces, stepping into)
+ - No clear way to store cell outputs to Git - found that Marimo uses a different approach - Auto-download (availble thropugh gerar icon at the top right). This way a snapshot will be saved to `__marimo__` folder
+ - Suggests to use included web IDE in edit mode (it even has support for AI assisant), though it's inferior to VSCode experience, had issues switching between Web and VSCode when I wanted AI assistance, like Jupyter in this regard
+ - Don't see why I need to mix Jupyter and Stremalit in Marimo which has 2 distinct modes - Notebooks (edit) and App (run) 
