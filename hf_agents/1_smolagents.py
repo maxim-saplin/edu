@@ -38,7 +38,7 @@ def _(mo):
     hf_model="Hugging Face (default free)"
     azure_model="Azure OpenAI (.env)"
     models = [hf_model, azure_model]
-    radio = mo.ui.radio(options=models, value=hf_model)
+    radio = mo.ui.radio(options=models, value=azure_model)
     radio
     return (
         AzureOpenAIServerModel,
@@ -81,22 +81,18 @@ def _(mo):
 def _(MODEL, tool_start):
     from smolagents import CodeAgent, DuckDuckGoSearchTool
 
-    r = "No results from the agent"
+    search_result = "No results from the agent"
 
     if tool_start.value:
         agent = CodeAgent(tools=[DuckDuckGoSearchTool()], model=MODEL)
-        r = agent.run("Search for the best music recommendations for a party at the Wayne's mansion.")
-    return CodeAgent, DuckDuckGoSearchTool, agent, r
+        search_result = agent.run("Search for the best music recommendations for a party at the Wayne's mansion.")
+    return CodeAgent, DuckDuckGoSearchTool, agent, search_result
 
 
 @app.cell
-def _(mo, r):
-    if isinstance(r, list):
-        result = "\n".join(str(item) for item in r)
-    else:
-        result = str(r)
-    mo.md(result)
-    return (result,)
+def _(mo, search_result):
+    mo.md(str(search_result))
+    return
 
 
 @app.cell
@@ -106,7 +102,59 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(mo):
+    custom_tool_start = mo.ui.run_button(label="START")
+    custom_tool_start
+    return (custom_tool_start,)
+
+
+@app.cell
+def _(CodeAgent, MODEL, custom_tool_start):
+    from smolagents import tool
+    cust_result = "No Custom Tool Result"
+
+    # Tool to suggest a menu based on the occasion
+    @tool
+    def suggest_menu(occasion: str) -> str:
+        """
+        Suggests a menu based on the occasion.
+        Args:
+            occasion: The type of occasion for the party.
+        """
+        if occasion == "casual":
+            return "Pizza, snacks, and drinks."
+        elif occasion == "formal":
+            return "3-course dinner with wine and dessert."
+        elif occasion == "superhero":
+            return "Buffet with high-energy and healthy food."
+        else:
+            return "Custom menu for the butler."
+
+    def _():
+
+        import numpy as np
+        import time
+        import datetime
+
+        # Alfred, the butler, preparing the menu for the party
+        # Smolagents use a custom LocalPythonInterpreter that
+        # sandboxes exectuion and limmits imports
+        agent = CodeAgent(tools=[suggest_menu], model=MODEL, additional_authorized_imports=['datetime'])
+        global cust_result
+
+        # Preparing the menu for the party
+        cust_result = agent.run("Prepare a formal menu for the party. Break it down into schedule")
+        print("----------------------\n")
+        print(cust_result)
+
+    if custom_tool_start.value:
+        _()
+    return cust_result, suggest_menu, tool
+
+
+@app.cell
+def _(cust_result, mo):
+    mo.md(str(cust_result))
     return
 
 
