@@ -7,8 +7,6 @@ Practice/examples from Huggingface's Agents Course
 
 ## Lesson 1 - Agents that use Code
 
-## NOTES
-
 - Unlike ReAct agents (or tool calling LLMs) instead of asking for a JSON object (or any other kind of structured object describing action) Code Agents specifically ask for replies in code, there's a paper that LLMs are very good generating Python, why even bother asking for JSON objects and pasrsing separately the action mapping those to actions
 - Using 'print()' statements for intermediate (non final) steps
 - There's a custom implementation of interpreter with sandboxed execution and limmited list of import (one can add explicitly extra imports)
@@ -16,6 +14,11 @@ Practice/examples from Huggingface's Agents Course
 - Unlike CrewAI where teh ReAct prmopmpting uses only one message (appending the last message to the message body), CodeAgent actually uses multi-turn messages having Assuistans/User messages for different steps
 - smolagents integrate OpenTelementry and propose to use cloud service Langfuse for viewing the traces (https://huggingface.co/docs/smolagents/tutorials/inspect_runs)
 - CodeAgents system prompt alone is 2000+ tokens
+
+## Lesson 2 - Writing actions as code snippets or JSON blobs
+
+- ToolCallingAgent class relies or models native support for funtion/tool calling
+- Otherwise seems similar to CodeAgent in terms of results, it just achived via a different approach
 
 ## Notes
 
