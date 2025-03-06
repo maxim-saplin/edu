@@ -2,3 +2,5 @@ marimo
 smolagents
 watchdog
 smolagents[openai]
+langchain_community
+rank_bm25
