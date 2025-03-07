@@ -40,6 +40,11 @@ Practice/examples from Huggingface's Agents Course
 Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)\n``` was not found in it. OR ode that didn't run)
 - `manager_agent.python_executor.state["fig"]` was magical, didn't expect it'd build an interactive zoomable map with PoI. I used shorter prompt wiht no example of ho to plot data (the original prompt had code sample with "fig" var), LLM made the rigth code snippet with the assuned fig local var name (guess it's pretty common in training data)
 
+## Lesson 6 - Vision model
+
+- Nice end-to-end example with Selenium web driver controlling chrome and GPOT-4o using vision to decide on next steps
+- Yet bot struggled closing pcookie pop-ups and never completed execution... Too much effort to little result to my liking
+
 
 ## Marimo
 
