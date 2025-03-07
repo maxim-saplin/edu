@@ -4,3 +4,12 @@ watchdog
 smolagents[openai]
 langchain_community
 rank_bm25
+matplotlib
+geopandas
+shapely
+kaleido
+plotly
+pandas
+numpy
+pillow
+nbformat

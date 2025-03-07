@@ -27,6 +27,18 @@ Practice/examples from Huggingface's Agents Course
 - The former relies on smolagents passing in docstring as tool descriotion to LLM, the latter one gives more finer grain control
 - One can load tools from HF (as well as upload tools there), use HF spaces as tools and import LangChain tools
 
+## Lesson 4 - RAG
+
+- Perplexity in (almost) 10 lines of cdeo - liked how easy it was it implement a bot that used 2 tools - web search and web visit
+- Another sample relied on LangChain's tools for chunking and semanric search vi embeddings (BM25 rrtiever)
+
+## Lesson 5 - Multi-Agent
+
+- Liked how manager works and how visulationzation create an ACSCII graph of model dependency
+- Setting agent.planning_interval to the number of steps at which planning prompt is inserted, i.e. smoll agent prompts the LLM to make a plan at this number of steps (starting 0)
+- Yet authorized imports and code generation (even with GPT-4o) is not as flawless - had to make a number of attempts fighting to have all required imports, dependencies installed via pip, observing how agents struggled generating code that actually worked (e.g. multiple Error in code parsing:
+Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)\n``` was not found in it. OR ode that didn't run)
+- `manager_agent.python_executor.state["fig"]` was magical, didn't expect it'd build an interactive zoomable map with PoI
 ## Marimo
 
 Tried Marimo (`marimo edit --watch 1_smolagents.py` ) with 1st lesson, unfortunate discoveries:
