@@ -38,11 +38,13 @@ Practice/examples from Huggingface's Agents Course
 - Setting agent.planning_interval to the number of steps at which planning prompt is inserted, i.e. smoll agent prompts the LLM to make a plan at this number of steps (starting 0)
 - Yet authorized imports and code generation (even with GPT-4o) is not as flawless - had to make a number of attempts fighting to have all required imports, dependencies installed via pip, observing how agents struggled generating code that actually worked (e.g. multiple Error in code parsing:
 Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)\n``` was not found in it. OR ode that didn't run)
-- `manager_agent.python_executor.state["fig"]` was magical, didn't expect it'd build an interactive zoomable map with PoI
+- `manager_agent.python_executor.state["fig"]` was magical, didn't expect it'd build an interactive zoomable map with PoI. I used shorter prompt wiht no example of ho to plot data (the original prompt had code sample with "fig" var), LLM made the rigth code snippet with the assuned fig local var name (guess it's pretty common in training data)
+
+
 ## Marimo
 
 Tried Marimo (`marimo edit --watch 1_smolagents.py` ) with 1st lesson, unfortunate discoveries:
  - No debegging (breakpoints, traces, stepping into)
  - No clear way to store cell outputs to Git - found that Marimo uses a different approach - Auto-download (availble thropugh gerar icon at the top right). This way a snapshot will be saved to `__marimo__` folder
  - Suggests to use included web IDE in edit mode (it even has support for AI assisant), though it's inferior to VSCode experience, had issues switching between Web and VSCode when I wanted AI assistance, like Jupyter in this regard
- - Don't see why I need to mix Jupyter and Stremalit in Marimo which has 2 distinct modes - Notebooks (edit) and App (run) 
+ - Don't see why I need to mix Jupyter and Stremalit in Marimo which has 2 distinct modes - Notebooks (edit) and App (run)
