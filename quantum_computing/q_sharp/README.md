@@ -1,0 +1,5 @@
+Windows only.
+
+```
+dotnet run
+```

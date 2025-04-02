@@ -33,9 +33,9 @@
 		mutable num1110 = 0;
 		mutable num1111 = 0;
 
-		using (qubits = Qubit[4])
+		use qubits = Qubit[4]
 		{
-			for (test in 1..10000)
+			for test in 1..10000
 			{
 				Set (Zero, qubits[0]);
 				Set (Zero, qubits[1]);
