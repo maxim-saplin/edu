@@ -28,8 +28,10 @@ class PhotonPolarizationMeasurement {
 
     // List of angle pairs to test (initial angle, measurement angle)
     List<List<double>> anglePairs = [
+      [0, 90],
+      [0, 0],
+      [0, 70],
       [0, 45],
-      [30, 90],
       [45, 135], 
       [60, 30],
       [90, 0],
