@@ -97,7 +97,6 @@ class EntangledPhotonMeasurement {
     // 11
     double originalp1angle = m1angle;
     double originalp2angle = m2angle;
-    double prob11 = square((p00*m00) + (p01*m01) + (p10*m10) + (p11*m11));
     setMeasurementAngles(90 + originalp1angle, originalp2angle); // 01
     double prob01 = square((p00*m00) + (p01*m01) + (p10*m10) + (p11*m11));
     setMeasurementAngles(originalp1angle, originalp2angle+90); // 10
@@ -143,17 +142,32 @@ class EntangledPhotonMeasurement {
     }
   }
   
-  static void main() {
+  static void run() {
     // Compute probabilities. But we don't make any measurement. So the Photon state is not changed.
-    EntangledPhotonMeasurement pairPrediction = EntangledPhotonMeasurement(0.707106, 0, 0, 0.707106);
-    pairPrediction.setMeasurementAngles(90, 90);
+    // EntangledPhotonMeasurement pairPrediction = EntangledPhotonMeasurement(0.707106, 0, 0, 0.707106); // Square root of 1/2, probabilities of entangled photon states
+    EntangledPhotonMeasurement pairPrediction = EntangledPhotonMeasurement( 0, 0.707106, -0.707106, 0); // square is 1/2 probability, complex number
+    pairPrediction.setMeasurementAngles(90, 90); //aligned apparatus, one apparatus per photon
+      // Probability of 00 = 0.50
+      // Probability of 01 = 0.00
+      // Probability of 10 = 0.00
+      // Probability of 11 = 0.50
+    // pairPrediction.setMeasurementAngles(10, 90); // non-aligned apparatus, changes the probabilites
+      // Probability of 00 = 0.02
+      // Probability of 01 = 0.48
+      // Probability of 10 = 0.48
+      // Probability of 11 = 0.02
     pairPrediction.reportMeasurementProbability();
     
     // Perform some measurements. Measurements will change the photon states.
     for(int i = 0; i < 100; i++) {
       EntangledPhotonMeasurement pairExperiment = EntangledPhotonMeasurement(0.707106, 0, 0, 0.707106);
-      pairExperiment.setMeasurementAngles(90, 90);
+      // pairExperiment.setMeasurementAngles(90, 90);
+      pairExperiment.setMeasurementAngles(10, 80);
       pairExperiment.performMeasurement();
     }
   }
-} 
+}
+
+void main() {
+  EntangledPhotonMeasurement.run();
+}

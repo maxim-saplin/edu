@@ -3,8 +3,8 @@ import 'EntangledPhotonMeasurement.dart';
 
 void main() {
   print('===== Photon Polarization Measurement =====');
-  PhotonPolarizationMeasurement.main();
+  PhotonPolarizationMeasurement.run();
   
   print('\n\n===== Entangled Photon Measurement =====');
-  EntangledPhotonMeasurement.main();
+  EntangledPhotonMeasurement.run();
 } 

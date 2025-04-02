@@ -24,7 +24,7 @@ class PhotonPolarizationMeasurement {
     }
   }
   
-  static void main() {
+  static void run() {
 
     // List of angle pairs to test (initial angle, measurement angle)
     List<List<double>> anglePairs = [
