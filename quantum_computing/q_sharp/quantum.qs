@@ -4,18 +4,22 @@
     open Microsoft.Quantum.Canon;
 	open Microsoft.Quantum.Convert;
 
+	// Setting value of the qubit to the desired value (Result)
 	operation Set (desired: Result, q1: Qubit) : Unit
     {
-		let current = M(q1);
+		let current = M(q1); // measuring and collapsing the qubit and getting 0 or 1
 		if (desired != current)
 		{
-			X(q1);
+			X(q1); // if not desired value, we invert via NOT
 		}   
     }
 
+	// Running 4 qubit calculation
 	@EntryPoint()
 	operation QB4Run () : Unit
     {
+		// Counters measuring how many times the given qubit was 0
+		// Naming, starting from rightm i.e. qubits #4321, 16 comb
 		mutable num0000 = 0;
 		mutable num0001 = 0;
 		mutable num0010 = 0;
@@ -33,9 +37,9 @@
 		mutable num1110 = 0;
 		mutable num1111 = 0;
 
-		use qubits = Qubit[4]
+		use qubits = Qubit[4] // using 4 qubits
 		{
-			for test in 1..10000
+			for test in 1..10000 // number of smples
 			{
 				Set (Zero, qubits[0]);
 				Set (Zero, qubits[1]);
@@ -95,6 +99,8 @@
 				//Set (Zero, qubits[2]); //Initialized to 0. Gets a result of the fanout from qubits[1]
 				//CCNOT(qubits[0],qubits[1],qubits[2]);
 
+
+				// Measauring the output values
 				let res0 = M (qubits[0]);
 				let res1 = M (qubits[1]);
 				let res2 = M (qubits[2]);
@@ -119,6 +125,9 @@
 				
 				
 			}
+
+			// Reseting qubits to 0 at the end of the operation as reqjuired by Q#
+
 			Set(Zero, qubits[0]);
 			Set(Zero, qubits[1]);
 			Set(Zero, qubits[2]);
