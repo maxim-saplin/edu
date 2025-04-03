@@ -1,0 +1,2 @@
+qiskit==2.0.0
+qiskit-aer==0.17.0 #simulator
