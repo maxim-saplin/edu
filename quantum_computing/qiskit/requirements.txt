@@ -1,6 +1,7 @@
 qiskit==2.0.0
 qiskit-aer==0.17.0 #simulator
 qiskit-algorithms==0.3.1
+qiskit-machine-learning
 ipykernel
 matplotlib
 pylatexenc
