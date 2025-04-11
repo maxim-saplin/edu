@@ -1,5 +1,4 @@
 # flake8: noqa: 266
-import json
 import pprint
 import autogen
 from llm import get_llm_config
@@ -15,7 +14,7 @@ task = """
        """
 
 # Not sure why AssitantAgent is used here, seems like the only difference
-# from ConversableAgent used before is the presence of default system messager
+# from ConversableAgent used before is the presence of default system message
 # which is overriden anyway - hence no pooint in introducing a different kind of agent
 writer = autogen.AssistantAgent(
     name="Writer",
@@ -26,9 +25,9 @@ writer = autogen.AssistantAgent(
     llm_config=llm_config,
 )
 
-reply = writer.generate_reply(messages=[{"content": task, "role": "user"}])
+# reply = writer.generate_reply(messages=[{"content": task, "role": "user"}])
 
-print(reply)
+# print(reply)
 
 ## Add Reflection
 
@@ -44,7 +43,7 @@ critic = autogen.AssistantAgent(
 )
 
 # That's how you make 2 LLMs collaborate/discuss the subject, Critic is the sender of the 1st message which is task
-# Terminating on 2nd turn, since the last message comes froim writer, it is likely to cointain one iteration
+# Terminating on 2nd turn, since the last message comes froim writer, it is likely to contain one iteration
 # on the blog post based on feedback provided from Ciritc:
 #
 # Writer {role: "system"}   - system message
@@ -55,9 +54,9 @@ critic = autogen.AssistantAgent(
 # Critic {role: "user"}     - feedback
 # Writer {role: "assitant"} - updated blog post
 
-res = critic.initiate_chat(
-    recipient=writer, message=task, max_turns=2, summary_method="last_msg"
-)
+# res = critic.initiate_chat(
+#     recipient=writer, message=task, max_turns=2, summary_method="last_msg"
+# )
 
 ## Nested Chat
 
@@ -112,7 +111,7 @@ def reflection_message(recipient, messages, sender, config):
             \n\n {recipient.chat_messages_for_summary(sender)[-1]['content']}"""
 
 
-# Nested chats initiated via Critic, exit contidion is one turn
+# Nested chats are initiated via Critic, exit contidion is one turn
 # Turn off "summary_method": "reflection_with_llm" as it doesn't yield any Context to the meta reviewer
 # while in DL course the meta reviewer received a complete list of JSON objects - seems like a bug
 # (I used version 0.3.0 of Autogen and GPT-4o mini, while DL had 0.2.25 and GPT 3.5)
@@ -175,19 +174,19 @@ print("\n\n\n\n\n---------------------------------------\n\n\n\n\n")
 
 # This one onl prints the top level chat/dict of LLM conversation log
 # Not sure how to show the history of nested chats
-pprint.pprint(chat_result.chat_history)
+# pprint.pprint(chat_result.chat_history)
 
 ## Notes
 # Overal with nested chats we get a top level chat with 2 turns between Critic and writer (4 messages),
-# Before initiating the 2nd turn the Critic staets 4 child chats aggregating feedback from 4 different agents
+# Before initiating the 2nd turn the Critic starts 4 child chats aggregating feedback from 4 different agents
 # and then using it as the 2nd message to the writer asking it to make another attempt
 # This looks like an interesting pattern where you can launch a subchain of prompts doing processing of master chain's mssages,
 # also aggergsting a review from 4 agents from a nested chat makes sense as it may save on tokens
 # and not confuse the writer with abundance of input words.
 # Yet the demonstration is quite rigid prompt chain, not a versatile self-managed collective of agents (yet again inflated Gen AI expectations).
-# Anyways not sure if Autogen brings much vaoue here, still missing the control over prompts and their flow (the LangChain controversy is relevant here),
+# Anyways not sure if Autogen brings much value here, still missing the control over prompts and their flow (the LangChain controversy is relevant here),
 # Autogen might be giving to much abstractions which stay in a way and do not help with debugging (see the llm summarization commented out
-# in nested chats due to bugs). I still fell that for such cases (up until lesson 3) Autogen doesn't give much values,
+# in nested chats due to bugs). I still fell that for such cases (up until lesson 3) Autogen doesn't give much value,
 # simplictic prompt chains bakcreferencing previous chains with minimal LLM libraries are better and give more visibility and controler over prompts,
 # e.g. https://gist.github.com/disler/d51d7e37c3e5f8d277d8e0a71f4a1d2e
 # (TODO - try recreating this sample with prompt chain as in the link, see how it compares)
