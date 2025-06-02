@@ -51,6 +51,8 @@ Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)
 - LLama hub has plenty of integrations
 - LLM as a judge for quick RAG eval (FaithfulnessEvaluator, AnswerRelevancyEvaluator, CorrectnessEvaluator)
 - Has own helpers for tools (define Pyhton func, pass it into LLM, get called, return results to LLM), can group tools in tools specs, supports callinmg MCP servers via McpToolSpec()
+- Supports 3 kinds of agents: Function Calling Agents (for LLMs with native function calling), ReAct Agents (can work with any AI that does chat or text endpoint), Advanced Custom Agents (use more complex methods likeLLMCompiler or Chain-of-Abstraction)
+- Support multi-agent systems and workflows
 
 
 ## Marimo
