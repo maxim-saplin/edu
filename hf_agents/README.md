@@ -29,7 +29,7 @@ Practice/examples from Huggingface's Agents Course
 
 ## Lesson 4 - RAG
 
-- Perplexity in (almost) 10 lines of cdeo - liked how easy it was it implement a bot that used 2 tools - web search and web visit
+- Perplexity in (almost) 10 lines of code - liked how easy it was it implement a bot that used 2 tools - web search and web visit
 - Another sample relied on LangChain's tools for chunking and semanric search vi embeddings (BM25 rrtiever)
 
 ## Lesson 5 - Multi-Agent
@@ -44,6 +44,13 @@ Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)
 
 - Nice end-to-end example with Selenium web driver controlling chrome and GPOT-4o using vision to decide on next steps
 - Yet bot struggled closing pcookie pop-ups and never completed execution... Too much effort to little result to my liking
+
+## Lesson 7 - LlamaIndex
+
+- While LLama Index has the basic facilities for generating responses with LLMs it's key strngth seem to be the data extraction, indexing and processing via LLMs
+- LLama hub has plenty of integrations
+- LLM as a judge for quick RAG eval (FaithfulnessEvaluator, AnswerRelevancyEvaluator, CorrectnessEvaluator)
+- Has own helpers for tools (define Pyhton func, pass it into LLM, get called, return results to LLM), can group tools in tools specs, supports callinmg MCP servers via McpToolSpec()
 
 
 ## Marimo

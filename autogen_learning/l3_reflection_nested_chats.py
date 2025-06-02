@@ -25,9 +25,9 @@ writer = autogen.AssistantAgent(
     llm_config=llm_config,
 )
 
-# reply = writer.generate_reply(messages=[{"content": task, "role": "user"}])
+reply = writer.generate_reply(messages=[{"content": task, "role": "user"}])
 
-# print(reply)
+print(reply)
 
 ## Add Reflection
 
