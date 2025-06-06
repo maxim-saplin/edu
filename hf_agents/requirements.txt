@@ -23,3 +23,8 @@ llama-index-embeddings-azure-openai
 llama-index-llms-azure-openai
 llama_index.embeddings.huggingface
 llama-index-vector-stores-chroma
+
+# Langgraph
+langgraph
+langchain-openai
+langchain-core

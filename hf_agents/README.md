@@ -5,6 +5,8 @@ Practice/examples from Huggingface's Agents Course
 1. Activate venv
 2. `pip install -r requirements.txt`
 
+Lessons 1 - 5 use Smolagents, Lesson 6 is LlamaIndex, Lesson 7 is LangGraph
+
 ## Lesson 1 - Agents that use Code
 
 - Unlike ReAct agents (or tool calling LLMs) instead of asking for a JSON object (or any other kind of structured object describing action) Code Agents specifically ask for replies in code, there's a paper that LLMs are very good generating Python, why even bother asking for JSON objects and pasrsing separately the action mapping those to actions
@@ -53,6 +55,11 @@ Your code snippet is invalid, because the regex pattern ```(?:py|python)?\n(.*?)
 - Has own helpers for tools (define Pyhton func, pass it into LLM, get called, return results to LLM), can group tools in tools specs, supports callinmg MCP servers via McpToolSpec()
 - Supports 3 kinds of agents: Function Calling Agents (for LLMs with native function calling), ReAct Agents (can work with any AI that does chat or text endpoint), Advanced Custom Agents (use more complex methods likeLLMCompiler or Chain-of-Abstraction)
 - Support multi-agent systems and workflows
+
+## Lesson 8 - LangGraph
+
+- From the creators of LangChain, doesn't depend on LangChain
+- Formalizes workflows as nodes (actions as python functions), edges (transtions to other nodes) and states
 
 
 ## Marimo
